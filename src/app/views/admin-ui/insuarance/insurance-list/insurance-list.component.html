@@ -22,60 +22,35 @@
             <clr-dg-cell>{{user.id}}</clr-dg-cell>
             <clr-dg-cell>{{user.name}}</clr-dg-cell>
 
-
+            <clr-dg-cell
+                *ngIf="user.temp<=36"
+                style="background-color: rgb(175, 10, 10);  color: #fff  ;font-size: 20px;">{{user.temp}}C</clr-dg-cell>
 
             <clr-dg-cell
-            *ngIf="user.temp<=36"
-            style="background-color: rgb(175, 10, 10);  color: #fff  ;font-size: 20px;">{{user.temp}}C</clr-dg-cell>
-
-            
-            <clr-dg-cell
-            *ngIf="user.temp>36 && user.temp<=38"
-            style="background-color: rgb(115, 255, 0);  font-size: 20px;">{{user.temp}}C</clr-dg-cell>
-
-            
-            <clr-dg-cell
-            *ngIf="user.temp>38"
-            style="background-color: rgb(172, 2, 2); color: #fff; font-size: 20px;">{{user.temp}}C</clr-dg-cell>
-
-          
+                *ngIf="user.temp>36 && user.temp<=38"
+                style="background-color: rgb(115, 255, 0);  font-size: 20px;">{{user.temp}}C</clr-dg-cell>
 
             <clr-dg-cell
-            *ngIf="user.pulse>59 && user.pulse<=120"
-            style="background-color: rgb(115, 255, 0);  font-size: 20px;">{{user.pulse}}/m</clr-dg-cell>
-
-
-            
+                *ngIf="user.temp>38"
+                style="background-color: rgb(172, 2, 2); color: #fff; font-size: 20px;">{{user.temp}}C</clr-dg-cell>
 
             <clr-dg-cell
-            *ngIf="user.pulse< 60"
-            style="background-color: rgb(175, 10, 10);  color: #fff  ;font-size: 20px;">{{user.pulse}}C</clr-dg-cell>
-            <clr-dg-cell
-            *ngIf="user.pulse> 121"
-            style="background-color: rgb(175, 10, 10);  color: #fff  ;font-size: 20px;">{{user.pulse}}C</clr-dg-cell>
-
-            
-
-
-
-
-
-        
-
+                *ngIf="user.pulse>59 && user.pulse<=120"
+                style="background-color: rgb(115, 255, 0);  font-size: 20px;">{{user.pulse}}/m</clr-dg-cell>
 
             <clr-dg-cell
-            *ngIf="user.oxygen<80"
-            style="background-color: rgb(255, 0, 0);  color: #fff  ;font-size: 20px;">{{user.oxygen}}%</clr-dg-cell>
+                *ngIf="user.pulse< 60"
+                style="background-color: rgb(175, 10, 10);  color: #fff  ;font-size: 20px;">{{user.pulse}}/m</clr-dg-cell>
             <clr-dg-cell
-            *ngIf="user.oxygen>=81"
-            style="background-color: rgb(115, 255, 0);  font-size: 20px;">{{user.oxygen}}%</clr-dg-cell>
+                *ngIf="user.pulse> 121"
+                style="background-color: rgb(175, 10, 10); color: #fff  ;font-size: 20px;">{{user.pulse}}/m</clr-dg-cell>
 
-
-
-
-
-
-
+            <clr-dg-cell
+                *ngIf="user.oxygen<80"
+                style="background-color: rgb(175, 10, 10); color: #fff  ;font-size: 20px;">{{user.oxygen}}%</clr-dg-cell>
+            <clr-dg-cell
+                *ngIf="user.oxygen>=81"
+                style="background-color: rgb(115, 255, 0);  font-size: 20px;">{{user.oxygen}}%</clr-dg-cell>
 
             <clr-dg-cell>{{user.date}}</clr-dg-cell>
 
