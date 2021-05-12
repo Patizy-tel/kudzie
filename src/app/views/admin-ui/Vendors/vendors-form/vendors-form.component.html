@@ -1,0 +1,76 @@
+<div class="card">
+  <div class="card-block">
+      <h3>
+          <clr-icon shape="switch" size="28"></clr-icon>Vendors
+      </h3>
+      <br/>
+
+        <button class="btn btn-success" solid (click)="dialog=true">New +</button>
+
+      |
+      <a routerLink="/admin/vendors">
+        All
+      </a>
+      |
+      <a routerLink="/admin/vendors">
+        Fuel
+      </a>
+      |
+      <a routerLink="/admin/vendors">
+        Parts
+      </a>
+      |
+      <a routerLink="/admin/vendors">
+        vehicle
+      </a>
+
+      |
+      <a routerLink="/admin/vendors">
+        Archived
+      </a>
+  </div>
+</div>
+
+
+
+<clr-modal [(clrModalOpen)]="dialog">
+  <h3 class="modal-title">Add Vendor</h3>
+  <div class="modal-body">
+    <form clrStepper
+    [formGroup]="vendorForm"
+    (ngSubmit)="onSubmit()"
+    clrForm
+    >
+
+          <clr-input-container>
+            <label>Name</label>
+            <input clrInput formControlName="description" required />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Address</label>
+            <input type="text" clrInput formControlName="email" required />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Phone</label>
+            <input clrInput formControlName="name" required />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Website</label>
+            <input clrInput formControlName="phoneNumber" required />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Email</label>
+            <input clrInput formControlName="phoneNumber" required />
+          </clr-input-container>
+
+
+          <button type="submit" class="btn btn-success">submit</button>
+
+    </form>
+  </div>
+
+</clr-modal>

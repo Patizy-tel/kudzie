@@ -1,0 +1,53 @@
+<clr-main-container>
+
+    <div class="text-center">
+
+
+    <div class="login-wrapper">
+        <form
+            class="login"
+            [formGroup]="loginForm"
+            (ngSubmit)="onSubmit()"
+            clrForm
+       >
+            <div class="text-center">
+                <img alt="old mutual logo" src="../../../../assets/old mutual.png">
+
+                <div class="row login-group">
+                    <clr-input-container>
+                        <label>Username</label>
+                        <input
+                            type="text"
+                            name="username"
+                            clrInput
+                            name="username"
+                            formControlName="username"/>
+                    </clr-input-container>
+                    <clr-password-container>
+                        <label>Password</label>
+                        <input type="password" name="password" clrPassword formControlName="password"/>
+                    </clr-password-container>
+                    <button type="submit" class="btn btn-success" [clrLoading]="btnState$ | async">
+
+                        <div *ngIf="loading">
+                            <clr-spinner clrInline>
+                              Send
+                            </clr-spinner>
+
+                          </div>
+
+
+                            Send
+
+                    </button>
+
+                    <a class="signup" [routerLink]="['/forgot-password']"
+                    >Forgot Password?</a>
+  </div>
+            </div>
+        </form>
+
+    </div>
+
+    </div>
+</clr-main-container>

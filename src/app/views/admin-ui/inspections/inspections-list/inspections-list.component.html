@@ -1,0 +1,48 @@
+
+
+<div class="limit-height">
+
+  <clr-datagrid>
+    <clr-dg-column>ID</clr-dg-column>
+    <clr-dg-column [clrDgField]="'vehicle'">Registration Number</clr-dg-column>
+    <clr-dg-column [clrDgField]="'user'">User</clr-dg-column>
+    <clr-dg-column [clrDgField]="'failedItems'">Failed Items</clr-dg-column>
+    <clr-dg-column [clrDgField]="'date'">Reported Date</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of issues">
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.vehicle}}</clr-dg-cell>
+
+      <clr-dg-cell>{{user.user}}</clr-dg-cell>
+      <clr-dg-cell>{{user.failedItems}}</clr-dg-cell>
+
+      <clr-dg-cell>{{user.date}}</clr-dg-cell>
+
+
+      <clr-dg-action-overflow>
+
+
+      <button class="action-item" (click)="view.emit(user.id)">
+      More Detail
+    </button>
+    <button class="action-item" style="background-color: rgb(241, 187, 8);" >
+     Update
+    </button>
+    <button class="action-item" style="background-color: red; color: #fff;" >
+        Delete
+    </button>
+    </clr-dg-action-overflow>
+
+
+    </clr-dg-row>
+
+    <clr-dg-footer *ngIf="issues.length > 0">
+      {{ pagination.firstItem + 1 }}
+      -
+      {{ pagination.lastItem + 1 }}
+      of
+      {{ pagination.totalItems }}
+    Users       <clr-dg-pagination #pagination [clrDgTotalItems]="issues.length"></clr-dg-pagination></clr-dg-footer>
+  </clr-datagrid>
+
+  </div>

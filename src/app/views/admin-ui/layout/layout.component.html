@@ -1,0 +1,47 @@
+<clr-main-container>
+    <clr-header class="header-4" style="background-color: rgb(15, 158, 87);">
+        <div class="branding">
+            <a class="nav-link"></a>
+        </div>
+
+        <div class="header-actions">
+            <clr-dropdown class="dropdown bottom-right">
+                <button class="nav-text" clrDropdownToggle>
+                    Logout
+
+                </button>
+                <div class="dropdown-menu">
+                    <a routerLink="./password-management" clrDropdownItem>Password management</a>
+                    <a (click)="logout()" clrDropdownItem>Log out</a>
+                </div>
+            </clr-dropdown>
+        </div>
+    </clr-header>
+
+    <div class="content-container">
+        <div class="content-area">
+            <router-outlet></router-outlet>
+        </div>
+
+        <clr-vertical-nav
+
+
+            [clrVerticalNavCollapsible]="collapsible"
+            [(clrVerticalNavCollapsed)]="collapsed">
+            <a clrVerticalNavLink routerLink="./">
+                <clr-icon clrVerticalNavIcon shape="dashboard"></clr-icon>
+                Dashboard
+            </a>
+           
+
+            <a clrVerticalNavLink routerLink="./insuarance">
+                <clr-icon clrVerticalNavIcon shape="users"></clr-icon>
+                Patients
+            </a>
+
+
+          
+        </clr-vertical-nav>
+    </div>
+
+</clr-main-container>

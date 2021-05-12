@@ -1,0 +1,114 @@
+<clr-modal [(clrModalOpen)]="assignDialog">
+  <h3 class="modal-title">Assign Vehicle</h3>
+  <div class="modal-body">
+    <form
+    clrForm
+    >
+          <clr-input-container>
+            <label>Engine number</label>
+            <input clrInput  />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Model</label>
+            <input clrInput  />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Group Name</label>
+            <input clrInput />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Start Date</label>
+            <input type="date" clrInput />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>End Date</label>
+            <input type="date" clrInput />
+          </clr-input-container>
+
+          <clr-select-container>
+            <label>Vehicle Type</label>
+            <select clrSelect required >
+              <option >Select Vehicle</option>
+                <option value="Mr">Car</option>
+                <option value="Mrs">Truck</option>
+            </select>
+        </clr-select-container>
+
+
+        <clr-select-container>
+          <label>Operator</label>
+          <select clrSelect required >
+            <option >Select Operator</option>
+              <option value="Mr">Gift</option>
+              <option value="Mrs">Timothy</option>
+              <option value="Mrs">Farai</option>
+              <option value="Mrs">Tinashe</option>
+          </select>
+      </clr-select-container>
+          <button type="submit" class="btn btn-success">submit</button>
+
+    </form>
+  </div>
+
+</clr-modal>
+
+
+<div class="limit-height">
+
+  <clr-datagrid>
+    <clr-dg-column [clrDgField]="'name'">Registration Number</clr-dg-column>
+    <clr-dg-column [clrDgField]="'address'">E.C Number </clr-dg-column>
+    <clr-dg-column [clrDgField]="'address'">Current Metre (Miles)</clr-dg-column>
+    <clr-dg-column [clrDgField]="'ecNum'">Duration (Years)</clr-dg-column>
+    <clr-dg-column [clrDgField]="'ecNum'">Next service date</clr-dg-column>
+    <clr-dg-column [clrDgField]="'ecNum'"></clr-dg-column>
+    <clr-dg-column [clrDgField]="'address'">Operator</clr-dg-column>
+    <clr-dg-column [clrDgField]="'address'">Status</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let vehicle of vehicles">
+      <clr-dg-cell>{{vehicle.registration}}</clr-dg-cell>
+      <clr-dg-cell>{{vehicle.ec}}</clr-dg-cell>
+      <clr-dg-cell>{{vehicle.metre}}</clr-dg-cell>
+      <clr-dg-cell>{{vehicle.duration}}</clr-dg-cell>
+      <clr-dg-cell>{{vehicle.nextDueDate}}</clr-dg-cell>
+      <clr-dg-cell>{{vehicle.time}}</clr-dg-cell>
+      <clr-dg-cell>{{vehicle.operator}}</clr-dg-cell>
+      <clr-dg-cell *ngIf="vehicle.status==true">Active <clr-icon shape="user" class="is-solid has-badge--success"></clr-icon></clr-dg-cell>
+      <clr-dg-cell *ngIf="vehicle.status==false">In-active <clr-icon shape="user" class="is-solid has-badge"></clr-icon></clr-dg-cell>
+
+
+      <clr-dg-action-overflow>
+
+
+      <button class="action-item" (click)="assignDialog=true" >
+        Assign Operator
+    </button>
+    <button class="action-item" style="background-color: rgb(241, 187, 8);" >
+        Deactivate
+    </button>
+    <button class="action-item" style="background-color: red; color: #fff;" >
+        Delete
+    </button>
+    </clr-dg-action-overflow>
+
+
+    </clr-dg-row>
+
+    <clr-dg-footer *ngIf="vehicles.length > 0">
+      {{ pagination.firstItem + 1 }}
+      -
+      {{ pagination.lastItem + 1 }}
+      of
+      {{ pagination.totalItems }}
+    Vehicles       <clr-dg-pagination #pagination [clrDgTotalItems]="vehicles.length"></clr-dg-pagination></clr-dg-footer>
+  </clr-datagrid>
+
+  </div>
+
+
+
+

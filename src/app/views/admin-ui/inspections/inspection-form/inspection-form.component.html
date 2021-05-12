@@ -1,0 +1,61 @@
+<div class="card">
+  <div class="card-block">
+      <h3>
+          <clr-icon shape="switch" size="28"></clr-icon>Inspections
+      </h3>
+      <br/>
+      <a>
+
+        <button class="btn btn-success"  (click)="dialog=true" solid>New +</button>
+      </a>
+      |
+      <a routerLink="/admin/inspections">
+        All
+      </a>
+      |
+      <a routerLink="/admin/inspections">
+        item Failures
+      </a>
+      |
+      <a routerLink="/admin/inspections">
+        Schedules
+      </a>
+      |
+      <a routerLink="/admin/inspections">
+        Closed
+      </a>
+
+  </div>
+</div>
+
+
+<clr-modal [(clrModalOpen)]="dialog">
+  <h3 class="modal-title">inspection Form</h3>
+  <div class="modal-body">
+    <form clrStepper
+    [formGroup]="vendorForm"
+    (ngSubmit)="onSubmit()"
+    clrForm
+    >
+
+          <clr-input-container>
+            <label>Registration Number</label>
+            <input clrInput formControlName="description" required />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>User</label>
+            <input type="email" clrInput formControlName="email" required />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Number of Failed Items</label>
+            <input clrInput formControlName="name" required />
+          </clr-input-container>
+
+          <button type="submit" class="btn btn-success">submit</button>
+
+    </form>
+  </div>
+
+</clr-modal>

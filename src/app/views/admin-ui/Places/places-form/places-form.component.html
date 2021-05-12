@@ -1,0 +1,66 @@
+<div class="card">
+  <div class="card-block">
+      <h3>
+          <clr-icon shape="switch" size="28"></clr-icon>Places
+      </h3>
+      <br/>
+      <a routerLink="/admin/places/">
+        Maps
+      </a>
+     
+      |
+      <a routerLink="/admin/places/all">
+        All
+      </a>
+
+  </div>
+</div>
+
+
+
+<clr-modal [(clrModalOpen)]="dialog">
+  <h3 class="modal-title">Add Place</h3>
+  <div class="modal-body">
+    <form clrStepper
+    [formGroup]="placeForm"
+    (ngSubmit)="onSubmit()"
+    clrForm
+    >
+
+          <clr-input-container>
+            <label>Description</label>
+            <input clrInput formControlName="description" required />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Email</label>
+            <input type="email" clrInput formControlName="email" required />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Name</label>
+            <input clrInput formControlName="name" required />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Phone Number</label>
+            <input clrInput formControlName="phoneNumber" required />
+          </clr-input-container>
+
+          <clr-select-container>
+            <label>Service Type</label>
+            <select clrSelect required >
+              <option >Select Servicec</option>
+                <option value="Mr">Fuel</option>
+                <option value="Mrs">Servicec</option>
+                <option value="Miss">Vehicle</option>
+
+
+            </select>
+        </clr-select-container>
+          <button type="submit" class="btn btn-success">submit</button>
+
+    </form>
+  </div>
+
+</clr-modal>

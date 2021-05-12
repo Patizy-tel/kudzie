@@ -1,0 +1,61 @@
+
+<div class="card">
+  <div class="card-block">
+      <h3>
+          <clr-icon shape="switch" size="28"></clr-icon>Intergrations
+      </h3>
+     
+      <a routerLink="/admin/intergrations">
+        All
+      </a>
+     
+  </div>
+</div>
+
+<div class="limit-height">
+
+  <clr-datagrid>
+      <clr-dg-column>ID</clr-dg-column>
+      <clr-dg-column [clrDgField]="'model'">Account</clr-dg-column>
+      <clr-dg-column [clrDgField]="'schedule'">Vehicle Name</clr-dg-column>
+      <clr-dg-column [clrDgField]="'due'">Engine Number</clr-dg-column>
+      <clr-dg-column [clrDgField]="'last'">Model</clr-dg-column>
+      <clr-dg-column [clrDgField]="'compliance'">Activation Date</clr-dg-column>
+      <clr-dg-column [clrDgField]="'compliance'">Subscription Expiration Date</clr-dg-column>
+      <clr-dg-column [clrDgField]="'compliance'">Status</clr-dg-column>
+      <clr-dg-row *clrDgItems="let user of reminders">
+          <clr-dg-cell>{{user.id}}</clr-dg-cell>
+          <clr-dg-cell>{{user.account}}</clr-dg-cell>
+          <clr-dg-cell>{{user.vehiclename}}</clr-dg-cell>
+          <clr-dg-cell>{{user.engine}}</clr-dg-cell>
+          <clr-dg-cell>{{user.model}}</clr-dg-cell>
+          <clr-dg-cell>{{user.activation}}</clr-dg-cell>
+          <clr-dg-cell>{{user.expiration}}</clr-dg-cell>
+          <clr-dg-cell *ngIf="user.active==true">Active <clr-icon shape="user" class="is-solid has-badge--success"></clr-icon></clr-dg-cell>
+          <clr-dg-cell *ngIf="user.active==false">In-active <clr-icon shape="user" class="is-solid has-badge"></clr-icon></clr-dg-cell>
+    
+          <clr-dg-action-overflow>
+
+              <button class="action-item">
+                  Edit
+              </button>
+
+              <button class="action-item" style="background-color: red; color: #fff;">
+                  Delete
+              </button>
+          </clr-dg-action-overflow>
+
+      </clr-dg-row>
+
+      <clr-dg-footer *ngIf="reminders.length > 0">
+          {{ pagination.firstItem + 1 }}
+          -
+          {{ pagination.lastItem + 1 }}
+          of
+          {{ pagination.totalItems }}
+          Intergrations
+          <clr-dg-pagination #pagination [clrDgTotalItems]="reminders.length"></clr-dg-pagination>
+      </clr-dg-footer>
+  </clr-datagrid>
+
+</div>

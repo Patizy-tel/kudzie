@@ -1,0 +1,64 @@
+
+
+<div class="limit-height">
+
+  <clr-datagrid>
+    <clr-dg-column>ID</clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'phone'">Phone</clr-dg-column>
+    <clr-dg-column [clrDgField]="'email'">Email</clr-dg-column>
+    <clr-dg-column [clrDgField]="'status'">Status</clr-dg-column>
+
+
+    <clr-dg-column [clrDgField]="'date'">Updated Date</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users">
+      <clr-dg-cell>{{user.id}}</clr-dg-cell>
+      <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    
+      <clr-dg-cell>{{user.phone}}</clr-dg-cell>
+      <clr-dg-cell>{{user.email}}</clr-dg-cell>
+
+    
+
+      <clr-dg-cell *ngIf="user.status==true">Active <clr-icon shape="user" class="is-solid has-badge--success"></clr-icon></clr-dg-cell>
+      <clr-dg-cell *ngIf="user.status==false">In-active <clr-icon shape="user" class="is-solid has-badge"></clr-icon></clr-dg-cell>
+
+      <clr-dg-cell>{{user.date}}</clr-dg-cell>
+
+
+      <clr-dg-action-overflow>
+
+
+      <button class="action-item" >
+        Edit
+    </button>
+
+    <br/>
+
+
+
+    <button class="action-item" style="background-color: rgb(241, 187, 8);" >
+        Deactivate
+    </button>
+
+    <br/>
+
+    <button class="action-item" style="background-color: red; color: #fff;" >
+        Delete
+    </button>
+    </clr-dg-action-overflow>
+
+
+    </clr-dg-row>
+
+    <clr-dg-footer *ngIf="users.length > 0">
+      {{ pagination.firstItem + 1 }}
+      -
+      {{ pagination.lastItem + 1 }}
+      of
+      {{ pagination.totalItems }}
+    Users       <clr-dg-pagination #pagination [clrDgTotalItems]="users.length"></clr-dg-pagination></clr-dg-footer>
+  </clr-datagrid>
+
+  </div>

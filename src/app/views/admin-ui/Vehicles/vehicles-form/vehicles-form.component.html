@@ -1,0 +1,90 @@
+<div class="card">
+  <div class="card-block">
+      <h3>
+          <clr-icon shape="switch" size="28"></clr-icon>Vehicles
+      </h3>
+      <br/>
+   
+
+        <button class="btn btn-success" solid (click)="dialog=true">New +</button>
+  
+      |
+      <a routerLink="/admin/vehicles">
+        All
+      </a>
+      |
+      <a routerLink="/admin/vehicles">
+        Group
+      </a>
+      |
+      <a routerLink="/admin/vehicles">
+        vehicle
+      </a>
+
+      |
+      <a routerLink="/admin/vehicles">
+        Archived
+      </a>
+  </div>
+</div>
+
+
+
+<clr-modal [(clrModalOpen)]="dialog">
+  <h3 class="modal-title">Add Vehicle</h3>
+  <div class="modal-body">
+    <form clrStepper
+    [formGroup]="vehicleForm"
+    (ngSubmit)="onSubmit()"
+    clrForm
+    >
+
+          <clr-input-container>
+            <label>Registration number</label>
+            <input clrInput full formControlName="description" required />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>EC Number</label>
+            <input clrInput formControlName="email" required />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Current Metre</label>
+            <input clrInput formControlName="name" required />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Phone Number</label>
+            <input clrInput formControlName="phoneNumber" required />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Duration (Years)</label>
+            <input clrInput formControlName="phoneNumber" required />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Next service date</label>
+            <input type="date" clrInput formControlName="phoneNumber" required />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Next service time</label>
+            <input type="time" clrInput formControlName="phoneNumber" required />
+          </clr-input-container>
+
+          <clr-select-container>
+            <label>Operator</label>
+            <select clrSelect required >
+              <option >Select Operator</option>
+                <option value="Mr">Kudzai</option>
+                <option value="Mrs">Tafara</option>
+            </select>
+        </clr-select-container>
+          <button type="submit" class="btn btn-success">submit</button>
+
+    </form>
+  </div>
+
+</clr-modal>

@@ -1,0 +1,100 @@
+<div class="card">
+    <div class="card-block">
+        <h3>
+            <clr-icon shape="switch" size="28"></clr-icon>Bookings
+        </h3>
+        <br/>
+
+        |
+        <a routerLink="/admin/bookings">
+            Go Back
+        </a>
+        |
+
+    </div>
+</div>
+
+<div class="limit-height">
+
+    <clr-datagrid>
+        <clr-dg-column [clrDgField]="'vehicle'">Registration Number</clr-dg-column>
+        <clr-dg-column [clrDgField]="'user'">Operator</clr-dg-column>
+        <clr-dg-column [clrDgField]="'capacity'">Capacity</clr-dg-column>
+        <clr-dg-column [clrDgField]="'current'">Current Load</clr-dg-column>
+        <clr-dg-column [clrDgField]="'location'">
+            Pick up point
+        </clr-dg-column>
+        <clr-dg-column [clrDgField]="'location'">
+            Location
+        </clr-dg-column>
+        <clr-dg-column [clrDgField]="'date'">
+            Travelling Date
+        </clr-dg-column>
+        <clr-dg-column [clrDgField]="'location'">
+            Departure Time
+        </clr-dg-column>
+        <clr-dg-column [clrDgField]="'location'">
+            Pending Bookings
+        </clr-dg-column>
+        <clr-dg-column [clrDgField]="'status'">
+            Status
+        </clr-dg-column>
+
+        <clr-dg-row *clrDgItems="let user of bookings">
+            <clr-dg-cell>{{user.registration}}</clr-dg-cell>
+            <clr-dg-cell>{{user.name}}</clr-dg-cell>
+            <clr-dg-cell>{{user.capacity}}</clr-dg-cell>
+            <clr-dg-cell
+                *ngIf="user.current> user.capacity"
+                style="background-color: rgb(151, 61, 9); color: #fff;">{{user.current}}</clr-dg-cell>
+            <clr-dg-cell
+                *ngIf="user.current <= user.capacity"
+                style="background-color: rgb(42, 151, 9); color: #fff;">{{user.current}}</clr-dg-cell>
+            <clr-dg-cell>{{user.pickup}}</clr-dg-cell>
+            <clr-dg-cell>{{user.location}}</clr-dg-cell>
+            <clr-dg-cell>{{user.date}}</clr-dg-cell>
+            <clr-dg-cell>{{user.time}}</clr-dg-cell>
+            <clr-dg-cell>{{user.pending}}
+            </clr-dg-cell>
+
+            <clr-dg-cell
+                *ngIf="!user.status"
+                style="background-color: rgb(231, 61, 19); color: #fff;">Cancelled
+            </clr-dg-cell>
+            <clr-dg-cell
+                *ngIf="user.status"
+                style="background-color: rgb(42, 151, 9); color: #fff;">Open</clr-dg-cell>
+
+            <clr-dg-action-overflow>
+
+                <button class="action-item" (click)="view.emit(user.id)">
+                    More Detail
+                </button>
+
+                <br/>
+
+                <button class="action-item" style="background-color: rgb(241, 187, 8);">
+                    Update
+                </button>
+
+                <br/>
+
+                <button class="action-item" style="background-color: red; color: #fff;">
+                    Delete
+                </button>
+            </clr-dg-action-overflow>
+
+        </clr-dg-row>
+
+        <clr-dg-footer *ngIf="bookings.length > 0">
+            {{ pagination.firstItem + 1 }}
+            -
+            {{ pagination.lastItem + 1 }}
+            of
+            {{ pagination.totalItems }}
+            Users
+            <clr-dg-pagination #pagination [clrDgTotalItems]="bookings.length"></clr-dg-pagination>
+        </clr-dg-footer>
+    </clr-datagrid>
+
+</div>

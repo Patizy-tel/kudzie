@@ -1,0 +1,64 @@
+
+
+<div class="limit-height">
+
+<clr-datagrid>
+  <clr-dg-column>ID</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+  <clr-dg-column [clrDgField]="'address'">Address</clr-dg-column>
+  <clr-dg-column [clrDgField]="'phone'">Phone</clr-dg-column>
+  <clr-dg-column [clrDgField]="'website'">website</clr-dg-column>
+  <clr-dg-column [clrDgField]="'contactName'">Contact Name</clr-dg-column>
+  <clr-dg-column [clrDgField]="'contactEmail'">Contact Email</clr-dg-column>
+  <clr-dg-column [clrDgField]="'date'">Updated Date</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let user of vendors">
+    <clr-dg-cell>{{user.id}}</clr-dg-cell>
+    <clr-dg-cell>{{user.name}}</clr-dg-cell>
+    <clr-dg-cell>{{user.address}}</clr-dg-cell>
+    <clr-dg-cell>{{user.phone}}</clr-dg-cell>
+
+    <clr-dg-cell>{{user.website}}</clr-dg-cell>
+    <clr-dg-cell>{{user.contactName}}</clr-dg-cell>
+    <clr-dg-cell>{{user.contactEmail}}</clr-dg-cell>
+    <clr-dg-cell>{{user.date}}</clr-dg-cell>
+
+    
+    <clr-dg-action-overflow>
+
+ 
+    <button class="action-item" >
+      Edit 
+  </button>
+
+  <br/>
+
+  <button class="action-item" >
+      Maps
+  </button>
+  <br/>
+
+  <button class="action-item" style="background-color: rgb(241, 187, 8);" >
+      Deactivate
+  </button>
+
+  <br/>
+
+  <button class="action-item" style="background-color: red; color: #fff;" >
+      Delete 
+  </button>
+  </clr-dg-action-overflow>
+
+   
+  </clr-dg-row>
+
+  <clr-dg-footer *ngIf="vendors.length > 0">
+    {{ pagination.firstItem + 1 }}
+    -
+    {{ pagination.lastItem + 1 }}
+    of
+    {{ pagination.totalItems }}
+  VEndros       <clr-dg-pagination #pagination [clrDgTotalItems]="vendors.length"></clr-dg-pagination></clr-dg-footer>
+</clr-datagrid>
+
+</div>

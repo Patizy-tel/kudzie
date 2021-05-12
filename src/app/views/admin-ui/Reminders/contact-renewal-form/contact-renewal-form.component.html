@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="card-block">
+      <h3>
+          <clr-icon shape="switch" size="28"></clr-icon>Contact renewal reminder
+      </h3>
+      <br/>
+
+
+        <button class="btn btn-success" solid (click)="dialog=true">New +</button>
+
+      |
+      <a routerLink="/admin/contact-renewals">
+        All
+      </a>
+      |
+      <a routerLink="/admin/reminders">
+        Back
+      </a>
+
+  </div>
+</div>
+
+
+
+<clr-modal [(clrModalOpen)]="dialog">
+  <h3 class="modal-title">Add contact renewal reminder</h3>
+  <div class="modal-body">
+    <form clrStepper
+    [formGroup]="vendorForm"
+    (ngSubmit)="onSubmit()"
+    clrForm
+    >
+
+          <clr-input-container>
+            <label>Contact</label>
+            <input clrInput formControlName="name" required />
+          </clr-input-container>
+
+          <clr-input-container>
+            <label>Next Due Date</label>
+            <input type="date" clrInput formControlName="phoneNumber" required />
+          </clr-input-container>
+
+          <clr-select-container>
+            <label>Renewal Type</label>
+            <select clrSelect required >
+              <option >Select Service Renewal Type</option>
+                <option value="Mr">Certification</option>
+                <option value="Mrs">Registration</option>
+            </select>
+        </clr-select-container>
+          <button type="submit" class="btn btn-success">submit</button>
+
+    </form>
+  </div>
+
+</clr-modal>

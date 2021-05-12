@@ -1,0 +1,50 @@
+
+
+<div class="limit-height">
+
+  <clr-datagrid>
+    <clr-dg-column>Fuel Point</clr-dg-column>
+    <clr-dg-column [clrDgField]="'name'">Vehicle</clr-dg-column>
+    <clr-dg-column [clrDgField]="'address'">Time</clr-dg-column>
+    <clr-dg-column [clrDgField]="'phone'">Usage</clr-dg-column>
+    <clr-dg-column [clrDgField]="'website'">Volume</clr-dg-column>
+    <clr-dg-column [clrDgField]="'contactName'">Total</clr-dg-column>
+    <clr-dg-column [clrDgField]="'contactEmail'">Price</clr-dg-column>
+    <clr-dg-column [clrDgField]="'date'">Cost</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let ful of fuel">
+      <clr-dg-cell>{{ful.id}}</clr-dg-cell>
+      <clr-dg-cell>{{ful.model}}</clr-dg-cell>
+      <clr-dg-cell>{{ful.time}}</clr-dg-cell>
+      <clr-dg-cell>{{ful.usage}}</clr-dg-cell>
+
+      <clr-dg-cell>{{ful.volume}}</clr-dg-cell>
+      <clr-dg-cell>{{ful.total}}</clr-dg-cell>
+      <clr-dg-cell>{{ful.price}}</clr-dg-cell>
+      <clr-dg-cell>{{ful.cost}}</clr-dg-cell>
+
+
+      <clr-dg-action-overflow>
+
+
+      <button class="action-item" >
+        Edit
+    </button>
+    <button class="action-item" style="background-color: red; color: #fff;" >
+        Delete
+    </button>
+    </clr-dg-action-overflow>
+
+
+    </clr-dg-row>
+
+    <clr-dg-footer *ngIf="fuel.length > 0">
+      {{ pagination.firstItem + 1 }}
+      -
+      {{ pagination.lastItem + 1 }}
+      of
+      {{ pagination.totalItems }}
+      Fuel History       <clr-dg-pagination #pagination [clrDgTotalItems]="fuel.length"></clr-dg-pagination></clr-dg-footer>
+  </clr-datagrid>
+
+  </div>

@@ -1,0 +1,114 @@
+<div class="card">
+    <div class="card-block">
+        <h3>
+            <clr-icon shape="switch" size="28"></clr-icon>Patients
+        </h3>
+        <br/>
+
+    </div>
+</div>
+
+<div class="limit-height">
+
+    <clr-datagrid>
+        <clr-dg-column>ID</clr-dg-column>
+        <clr-dg-column [clrDgField]="'name'">Patient Name</clr-dg-column>
+        <clr-dg-column [clrDgField]="'temp'">Temperature</clr-dg-column>
+        <clr-dg-column [clrDgField]="'pulse'">Pulse</clr-dg-column>
+        <clr-dg-column [clrDgField]="'oxygen'">Oxygen Levels</clr-dg-column>
+        <clr-dg-column [clrDgField]="'date'">Reported Date</clr-dg-column>
+
+        <clr-dg-row *clrDgItems="let user of issues">
+            <clr-dg-cell>{{user.id}}</clr-dg-cell>
+            <clr-dg-cell>{{user.name}}</clr-dg-cell>
+
+
+
+            <clr-dg-cell
+            *ngIf="user.temp<=36"
+            style="background-color: rgb(175, 10, 10);  color: #fff  ;font-size: 20px;">{{user.temp}}C</clr-dg-cell>
+
+            
+            <clr-dg-cell
+            *ngIf="user.temp>36 && user.temp<=38"
+            style="background-color: rgb(115, 255, 0);  font-size: 20px;">{{user.temp}}C</clr-dg-cell>
+
+            
+            <clr-dg-cell
+            *ngIf="user.temp>38"
+            style="background-color: rgb(172, 2, 2); color: #fff; font-size: 20px;">{{user.temp}}C</clr-dg-cell>
+
+          
+
+            <clr-dg-cell
+            *ngIf="user.pulse>59 && user.pulse<=120"
+            style="background-color: rgb(115, 255, 0);  font-size: 20px;">{{user.pulse}}/m</clr-dg-cell>
+
+
+            
+
+            <clr-dg-cell
+            *ngIf="user.pulse< 60"
+            style="background-color: rgb(175, 10, 10);  color: #fff  ;font-size: 20px;">{{user.pulse}}C</clr-dg-cell>
+            <clr-dg-cell
+            *ngIf="user.pulse> 121"
+            style="background-color: rgb(175, 10, 10);  color: #fff  ;font-size: 20px;">{{user.pulse}}C</clr-dg-cell>
+
+            
+
+
+
+
+
+        
+
+
+            <clr-dg-cell
+            *ngIf="user.oxygen<80"
+            style="background-color: rgb(255, 0, 0);  color: #fff  ;font-size: 20px;">{{user.oxygen}}%</clr-dg-cell>
+            <clr-dg-cell
+            *ngIf="user.oxygen>=81"
+            style="background-color: rgb(115, 255, 0);  font-size: 20px;">{{user.oxygen}}%</clr-dg-cell>
+
+
+
+
+
+
+
+
+            <clr-dg-cell>{{user.date}}</clr-dg-cell>
+
+            <clr-dg-action-overflow>
+
+                <button class="action-item" (click)="view.emit(user.id)">
+                    More Detail
+                </button>
+
+                <br/>
+
+                <button class="action-item" style="background-color: rgb(241, 187, 8);">
+                    Update
+                </button>
+
+                <br/>
+
+                <button class="action-item" style="background-color: red; color: #fff;">
+                    Delete
+                </button>
+            </clr-dg-action-overflow>
+
+        </clr-dg-row>
+
+        <clr-dg-footer *ngIf="issues.length > 0">
+            {{ pagination.firstItem + 1 }}
+            -
+            {{ pagination.lastItem + 1 }}
+            of
+            {{ pagination.totalItems }}
+            Users
+            <clr-dg-pagination #pagination [clrDgTotalItems]="issues.length"></clr-dg-pagination>
+        </clr-dg-footer>
+    </clr-datagrid>
+
+</div>
