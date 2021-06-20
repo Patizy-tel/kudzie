@@ -24,11 +24,16 @@ export class UsersFormComponent implements OnInit {
 
 private createProjectForm() {
     this.vendorForm = new FormGroup({
-      description: new FormControl('', Validators.required),
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
-      name: new FormControl('', Validators.required),
-      phoneNumber: new FormControl('', Validators.required),
-      username: new FormControl('', Validators.required)
+      phone: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      gender: new FormControl('', Validators.required),
+      marital: new FormControl('', Validators.required),
+      EcontactName: new FormControl('', Validators.required),
+      EcontactNumber: new FormControl('', Validators.required),
     });
 }
 

@@ -25,9 +25,26 @@ export class AuthComponent implements OnInit {
 
         this.loading = true
 
-        this
-        .auth
-        .decodeToken("e.jwtToken")
+        console.log(e)
+
+        if(e.username === 'sysadmin' && e.password === 'admin@123'){
+
+            this
+            .auth
+            .decodeToken("e.jwtToken")
+
+
+        }else{
+
+            
+            this
+            .alert
+            .error('Incorrect Credentials')
+            this.loading = false
+
+        }
+
+      
 
 
    /*     this

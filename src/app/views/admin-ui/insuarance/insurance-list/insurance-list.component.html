@@ -1,62 +1,41 @@
-<div class="card">
-    <div class="card-block">
-        <h3>
-            <clr-icon shape="switch" size="28"></clr-icon>Patients
-        </h3>
-        <br/>
-
-    </div>
-</div>
 
 <div class="limit-height">
 
     <clr-datagrid>
-        <clr-dg-column>ID</clr-dg-column>
-        <clr-dg-column [clrDgField]="'name'">Patient Name</clr-dg-column>
-        <clr-dg-column [clrDgField]="'temp'">Temperature</clr-dg-column>
-        <clr-dg-column [clrDgField]="'pulse'">Pulse</clr-dg-column>
-        <clr-dg-column [clrDgField]="'oxygen'">Oxygen Levels</clr-dg-column>
-        <clr-dg-column [clrDgField]="'date'">Reported Date</clr-dg-column>
+        <clr-dg-column>Reference Number</clr-dg-column>
+        <clr-dg-column [clrDgField]="'firstName'">Patient Name</clr-dg-column>
+        <clr-dg-column [clrDgField]="'lastName'">Last Name</clr-dg-column>
+        <clr-dg-column [clrDgField]="'email'">Email</clr-dg-column>
+        <clr-dg-column [clrDgField]="'phone'">Phone</clr-dg-column>
+        <clr-dg-column [clrDgField]="'gender'">Gender</clr-dg-column>
+        <clr-dg-column [clrDgField]="'marital'">Marital Status</clr-dg-column>
 
-        <clr-dg-row *clrDgItems="let user of issues">
-            <clr-dg-cell>{{user.id}}</clr-dg-cell>
-            <clr-dg-cell>{{user.name}}</clr-dg-cell>
+        <clr-dg-column [clrDgField]="'address'">Address</clr-dg-column>
+        <clr-dg-column [clrDgField]="'city'">City</clr-dg-column>
+        <clr-dg-column [clrDgField]="'EcontactName'">Emergency Contact Name</clr-dg-column>
+        <clr-dg-column [clrDgField]="'EcontactNumber'">Emergency Contact Number </clr-dg-column>
+ 
+        <clr-dg-column [clrDgField]="'updatedAt'">Reported Date</clr-dg-column>
 
-            <clr-dg-cell
-                *ngIf="user.temp<=36"
-                style="background-color: rgb(175, 10, 10);  color: #fff  ;font-size: 20px;">{{user.temp}}C</clr-dg-cell>
+        <clr-dg-row *clrDgItems="let user of levels">
+            <clr-dg-cell>{{user._id}}</clr-dg-cell>
+            <clr-dg-cell>{{user.firstName}}</clr-dg-cell>
+            <clr-dg-cell>{{user.lastName}}</clr-dg-cell>
+            <clr-dg-cell>{{user.email}}</clr-dg-cell>
+            <clr-dg-cell>{{user.phone}}</clr-dg-cell>
+            <clr-dg-cell>{{user.gender}}</clr-dg-cell>
+            <clr-dg-cell>{{user.marital}}</clr-dg-cell>
+            <clr-dg-cell>{{user.address}}</clr-dg-cell>
+            <clr-dg-cell>{{user.city}}</clr-dg-cell>
+            <clr-dg-cell>{{user.EcontactName}}</clr-dg-cell>  
+            <clr-dg-cell>{{user.EcontactNumber}}</clr-dg-cell>
+        
 
-            <clr-dg-cell
-                *ngIf="user.temp>36 && user.temp<=38"
-                style="background-color: rgb(115, 255, 0);  font-size: 20px;">{{user.temp}}C</clr-dg-cell>
-
-            <clr-dg-cell
-                *ngIf="user.temp>38"
-                style="background-color: rgb(172, 2, 2); color: #fff; font-size: 20px;">{{user.temp}}C</clr-dg-cell>
-
-            <clr-dg-cell
-                *ngIf="user.pulse>59 && user.pulse<=120"
-                style="background-color: rgb(115, 255, 0);  font-size: 20px;">{{user.pulse}}/m</clr-dg-cell>
-
-            <clr-dg-cell
-                *ngIf="user.pulse< 60"
-                style="background-color: rgb(175, 10, 10);  color: #fff  ;font-size: 20px;">{{user.pulse}}/m</clr-dg-cell>
-            <clr-dg-cell
-                *ngIf="user.pulse> 121"
-                style="background-color: rgb(175, 10, 10); color: #fff  ;font-size: 20px;">{{user.pulse}}/m</clr-dg-cell>
-
-            <clr-dg-cell
-                *ngIf="user.oxygen<80"
-                style="background-color: rgb(175, 10, 10); color: #fff  ;font-size: 20px;">{{user.oxygen}}%</clr-dg-cell>
-            <clr-dg-cell
-                *ngIf="user.oxygen>=81"
-                style="background-color: rgb(115, 255, 0);  font-size: 20px;">{{user.oxygen}}%</clr-dg-cell>
-
-            <clr-dg-cell>{{user.date}}</clr-dg-cell>
+            <clr-dg-cell>{{user.updatedAt}}</clr-dg-cell>
 
             <clr-dg-action-overflow>
 
-                <button class="action-item" (click)="view.emit(user.id)">
+                <button class="action-item" (click)="view.emit(user._id)">
                     More Detail
                 </button>
 
@@ -75,15 +54,6 @@
 
         </clr-dg-row>
 
-        <clr-dg-footer *ngIf="issues.length > 0">
-            {{ pagination.firstItem + 1 }}
-            -
-            {{ pagination.lastItem + 1 }}
-            of
-            {{ pagination.totalItems }}
-            Users
-            <clr-dg-pagination #pagination [clrDgTotalItems]="issues.length"></clr-dg-pagination>
-        </clr-dg-footer>
     </clr-datagrid>
 
 </div>

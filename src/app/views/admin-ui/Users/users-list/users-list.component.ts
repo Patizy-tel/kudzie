@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ClrDatagridStateInterface } from '@clr/angular';
+import { Utilities } from 'src/app/models';
+import { AuthService } from 'src/app/services';
 
 @Component({
   selector: 'app-users-list',
@@ -6,14 +9,42 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users-list.component.css']
 })
 export class UsersListComponent implements OnInit {
-  users = [{"id":1,"name":"Kudzai","phone":"302-436-1472","email":"kudzi@xrea.com","status":false,"date":"3/8/2020"},
-  {"id":2,"name":"Tanaka","phone":"617-150-7541","email":"tanaka@umn.edu","status":true,"date":"1/17/2021"},
-  {"id":3,"name":"Tafadzwa","phone":"963-227-0791","email":"tafazwa@wikispaces.com","status":false,"date":"12/19/2020"},
-  {"id":4,"name":"Tinashe","phone":"769-877-8762","email":"tinashe@hostgator.com","status":true,"date":"7/30/2020"},
-  ]
-  constructor() { }
+  @Output() updatedState = new EventEmitter<ClrDatagridStateInterface>()
+  @Input() total :number
+  @Input() levels :[]
+ 
+  constructor(private notesSerices:AuthService) { }
 
   ngOnInit() {
+
+    this.getLevels({})
+
+
+    
   }
+
+
+  
+  public  getLevels(state:ClrDatagridStateInterface){
+
+    let id  = sessionStorage.getItem('theid')
+       this.notesSerices.getAllNotes(id,(Utilities.formatDatagridState(state, state.page
+         ? state.page.from / state.page.size
+         : 0))).subscribe((resp:any) =>{
+   
+                     console.log(resp);
+             this.total = resp.length;
+             this.levels= resp
+   
+   
+            
+         })
+   
+   
+   
+   
+   
+      }
+     
 
 }

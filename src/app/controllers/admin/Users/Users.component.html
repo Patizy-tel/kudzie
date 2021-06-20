@@ -1,8 +1,8 @@
 
-<app-users-form>
-
-</app-users-form>
-<app-users-list>
+<app-users-list 
+[total]="total" 
+(updatedState)="getLevels($event)"
+ [levels]="levels">
 
 
 </app-users-list>

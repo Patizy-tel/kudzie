@@ -1,3 +1,11 @@
-<app-insurance-list (view)='viewMore($event)'>
+
+
+<app-users-form (childSubmit)="postPatient($event)">
+
+</app-users-form>
+<app-insurance-list (view)='viewMore($event)'
+[total]="total" 
+(updatedState)="getLevels($event)"
+ [levels]="levels">
 
 </app-insurance-list>

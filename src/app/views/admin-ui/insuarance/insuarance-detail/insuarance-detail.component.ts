@@ -14,18 +14,28 @@ import {
   ApexXAxis,
   ApexDataLabels,
   ApexTooltip,
-  ApexStroke
+  ApexStroke,
+  ApexYAxis,
+  ApexLegend,
+  ApexTitleSubtitle
 } from "ng-apexcharts";
+import io from 'socket.io-client';
 
-
+const socket = io('http://localhost:3000');
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
   xaxis: ApexXAxis;
   stroke: ApexStroke;
-  tooltip: ApexTooltip;
   dataLabels: ApexDataLabels;
+  yaxis: ApexYAxis;
+  title: ApexTitleSubtitle;
+  labels: string[];
+  legend: ApexLegend;
+  subtitle: ApexTitleSubtitle;
 };
+
+
 
 
 @Component({
@@ -34,127 +44,165 @@ export type ChartOptions = {
   styleUrls: ['./insuarance-detail.component.scss']
 })
 export class InsuaranceDetailComponent implements OnInit {
-
-  @Output() view = new EventEmitter()
-
   @ViewChild("chart") chart: ChartComponent;
+  @ViewChild("chart2") chart2: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
+  public chartOptions2: Partial<ChartOptions>;
+  dayta =[];
+  laybels = [] ;
+  loader :boolean = true ;
+  tempdayta = [];
+  lasttemp:any;
+  lastpulse:any
 
-
-  public datasets: any;
-  public data: any;
-  public salesChart;
-  public clicked: boolean = true;
-  public clicked1: boolean = false;
 
   constructor() {
 
     this.chartOptions = {
       series: [
         {
-          name: "Tanaka",
-          data: [23, 49, 98, 51, 42, 55, 80]
-        },
-        {
-          name: "Tinashe",
-          data: [60, 21, 55, 72, 34, 92, 41]
-        } ,
-        
-        {
-          name: "Tonderai",
-          data: [90, 32, 45, 82, 4, 2, 1]
-        }
-        ,
-        {
-          name: "Kudzai",
-          data: [11, 32, 5, 32, 34, 55, 70]
-        }
-        ,
-        {
-          name: "Melody",
-          data: [40, 32, 4, 62, 34, 52, 30]
+          name: "Pulse",
+          data:[]
         }
       ],
       chart: {
+        type: "area",
         height: 350,
-        type: "area"
+        zoom: {
+          enabled: false
+        }
       },
       dataLabels: {
         enabled: false
       },
       stroke: {
-        curve: "smooth"
+        curve: "straight"
       },
-      xaxis: {
-        type: "category",
-        categories: [
-          "1Feb",
-          "2Feb",
-          "3Feb",
-          "4Feb",
-          "5Feb",
-          "6Feb",
-          "7Feb"
-        ]
+
+      title: {
+        text: "Pulse",
+        align: "left"
       },
-      tooltip: {
-        x: {
-          format: "dd/MM/yy HH:mm"
-        }
+      subtitle: {
+        text: "Pulse for the  Last Few Days",
+        align: "left"
+      },
+      labels:[],
+      yaxis: {
+        opposite: true
+      },
+      legend: {
+        horizontalAlign: "left"
       }
     };
-   }
 
+
+
+    
+    this.chartOptions2 = {
+      series: [
+        {
+          name: "Temperature",
+        color:'red',
+          data:[]
+        }
+      ],
+      chart: {
+        type: "area",
+        height: 350,
+        zoom: {
+          enabled: false
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: "straight"
+      },
+
+      title: {
+        text: "Temperature",
+        align: "left"
+      },
+      subtitle: {
+        text: "Temperature for the  Last Few Days",
+        align: "left"
+      },
+      labels:[],
+      yaxis: {
+        opposite: true
+      },
+      legend: {
+        horizontalAlign: "left"
+      }
+    };
+
+   
+  }
   ngOnInit() {
-
-    this.datasets = [
-      [0, 20, 10, 30, 15, 40, 20, 60, 60],
-      [10, 20, 5, 25, 10, 30, 15, 40, 40]
-    ];
-    this.data = this.datasets[0];
+    this.getInfo();
+    this.loader = false;
+  }
 
 
-    var chartOrders = document.getElementById('chart-orders');
 
-    parseOptions(Chart, chartOptions());
-
-
-    var ordersChart = new Chart(chartOrders, {
-      type: 'bar',
-      options: chartExample2.options,
-      data: chartExample2.data
+  async getInfo(){
+    socket.on('pulse' ,(res)=>{
+      this.dayta =res;
+    });
+    socket.on('_temp' ,(res)=>{
+      this.tempdayta =res;
+    });
+    socket.on('_date' ,(res)=>{
+      this.laybels = res ;
+  
+      this.updateCharts();
+     
     });
 
-    var chartSales = document.getElementById('chart-sales');
 
-    this.salesChart = new Chart(chartSales, {
-			type: 'line',
-			options: chartExample1.options,
-			data: chartExample1.data
-		});
+
+
+
+
+ 
+
+
+
+
+
+  }
+
+  addData(mylabels ,myData ,mytemp){
+    this.chartOptions.labels =mylabels;
+    this.chartOptions.series[0].data = myData;
+    this.chartOptions2.labels =mylabels;
+    this.chartOptions2.series[0].data = mytemp;
+
   }
 
 
-  public generateData(baseval, count, yrange) {
-    var i = 0;
-    var series = [];
-    while (i < count) {
-      var x = Math.floor(Math.random() * (750 - 1 + 1)) + 1;
-      var y =
-        Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
-      var z = Math.floor(Math.random() * (75 - 15 + 1)) + 15;
 
-      series.push([x, y, z]);
-      baseval += 86400000;
-      i++;
+  updateCharts(){
+
+
+    if(this.dayta.length === 0 &&  this.tempdayta.length === 0 && this.laybels.length === 0 ){
+  
+
+    }else{
+      this.lastpulse=this.dayta.slice(-1);
+      this.lasttemp=this.tempdayta.slice(-1);
+
+     this.addData(this.laybels, this.dayta, this.tempdayta);
+   
     }
-    return series;
+    this.lastpulse=this.dayta.slice(-1);
+    this.lasttemp=this.tempdayta.slice(-1);
+
+
+
+
+
   }
-
-
-  public updateOptions() {
-    this.salesChart.data.datasets[0].data = this.data;
-    this.salesChart.update();
-  }
-
 }

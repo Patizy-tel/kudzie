@@ -1,51 +1,32 @@
-
-<div class="limit-height">
-
-  <clr-datagrid>
-      <clr-dg-column [clrDgField]="'vehicle'">Registration Number</clr-dg-column>
-      <clr-dg-column [clrDgField]="'user'">Operator</clr-dg-column>
-      <clr-dg-column [clrDgField]="'capacity'">Capacity</clr-dg-column>
-      <clr-dg-column [clrDgField]="'location'">
-          Pick up point
-      </clr-dg-column>
-      <clr-dg-column [clrDgField]="'location'">
-          Location
-      </clr-dg-column>
-      <clr-dg-column [clrDgField]="'date'">
-          Travelling Date
-      </clr-dg-column>
-      <clr-dg-column [clrDgField]="'location'">
-          Departure Time
-      </clr-dg-column>
-      <clr-dg-column [clrDgField]="'location'">
-          Pending Bookings
-      </clr-dg-column>
-      
-
-      <clr-dg-row *clrDgItems="let user of bookings">
-          <clr-dg-cell>{{user.registration}}</clr-dg-cell>
-          <clr-dg-cell>{{user.name}}</clr-dg-cell>
-          <clr-dg-cell>{{user.capacity}}</clr-dg-cell>
+<div class="card">
     
-          <clr-dg-cell>{{user.pickup}}</clr-dg-cell>
-          <clr-dg-cell>{{user.location}}</clr-dg-cell>
-          <clr-dg-cell>{{user.date}}</clr-dg-cell>
-          <clr-dg-cell>{{user.time}}</clr-dg-cell>
-          <clr-dg-cell><button class="btn btn-warning">Book For this Journey</button>
-          </clr-dg-cell>
+  
+      <button class="btn btn-success" (click)="dialog=true" solid>New +</button>
+  
+      |
+   
+  </div>
+  
+  
+  <clr-modal [(clrModalOpen)]="dialog">
+    <h3 class="modal-title">Add Note</h3>
+    <div class="modal-body">
+      <form  class="loginForm" clrStepper [formGroup]="vendorForm" (ngSubmit)="onSubmit()" clrForm>
+  
+        <clr-input-container>
+          <label>Details </label>
+          <textarea  layout="horizontal" clrInput formControlName="details" required > </textarea>
+        </clr-input-container>
+  
 
-     
-      </clr-dg-row>
-
-      <clr-dg-footer *ngIf="bookings.length > 0">
-          {{ pagination.firstItem + 1 }}
-          -
-          {{ pagination.lastItem + 1 }}
-          of
-          {{ pagination.totalItems }}
-          Users
-          <clr-dg-pagination #pagination [clrDgTotalItems]="bookings.length"></clr-dg-pagination>
-      </clr-dg-footer>
-  </clr-datagrid>
-
-</div>
+  
+  
+  
+  
+        <button type="submit" class="btn btn-success">submit</button>
+  
+      </form>
+    </div>
+  
+  </clr-modal>
+  

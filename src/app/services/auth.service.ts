@@ -1,10 +1,11 @@
 import {Injectable, Inject} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs'
 import {ApisService} from './apis.service'
 import {Router, ActivatedRoute} from '@angular/router'
 import jwt_decode from 'jwt-decode';
 import { AlertService } from './alert.service';
+import { Page, GroupAuthorities } from '../models';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -72,4 +73,38 @@ export class AuthService {
 
     }
 
+
+    postPatient(patient) {
+        return this.apis.post('/api/patients',patient);
+
+    }
+
+
+    getAllpaitns(filters:any){
+
+
+        const httpParams = new HttpParams({fromObject: filters});
+        return this.apis.get <Page<GroupAuthorities>> (`/api/patients`, httpParams);
+
+
+    }
+
+
+    postNotes(notes){
+
+
+        return this.apis.post('/api/notes',notes);
+
+
+    }
+
+
+    getAllNotes( id,filters:any){
+
+
+        const httpParams = new HttpParams({fromObject: filters});
+        return this.apis.get <Page<GroupAuthorities>> (`/api/notes/${id}`, httpParams);
+
+
+    }
 }

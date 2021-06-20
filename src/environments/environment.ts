@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false ,
-  //apiUrl:'http://194.135.93.64:8080',
-  apiUrl:'https://api.datcure.com'
+ 
+  apiUrl:'http://localhost:3000'
 };
 
 /*
