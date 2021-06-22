@@ -21,7 +21,7 @@ import {
 } from "ng-apexcharts";
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:3000');
+const socket = io('https://backendpatientkudzie.herokuapp.com');
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
