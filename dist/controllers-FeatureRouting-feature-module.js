@@ -1,6 +1,6 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["controllers-FeatureRouting-feature-module"],{
 
-/***/ "./src/app/controllers/FeatureRouting/feature-Route.routing.ts":
+/***/ "3cIW":
 /*!*********************************************************************!*\
   !*** ./src/app/controllers/FeatureRouting/feature-Route.routing.ts ***!
   \*********************************************************************/
@@ -10,11 +10,9 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FeatureShellRouteRoutes", function() { return FeatureShellRouteRoutes; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-/* harmony import */ var _ui_admin_ui_layout_layout_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../ui/admin-ui/layout/layout.component */ "./src/app/ui/admin-ui/layout/layout.component.ts");
-/* harmony import */ var src_app_helper_auth_guard_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/helper/auth-guard.service */ "./src/app/helper/auth-guard.service.ts");
-
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _views_admin_ui_layout_layout_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../views/admin-ui/layout/layout.component */ "baQe");
 
 
 
@@ -23,13 +21,13 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: '',
-        loadChildren: () => __webpack_require__.e(/*! import() | auth-auth-module */ "auth-auth-module").then(__webpack_require__.bind(null, /*! ../auth/auth.module */ "./src/app/controllers/auth/auth.module.ts")).then((mod) => mod.AuthModule)
+        loadChildren: () => __webpack_require__.e(/*! import() | auth-auth-module */ "auth-auth-module").then(__webpack_require__.bind(null, /*! ../auth/auth.module */ "1zC5")).then((mod) => mod.AuthModule)
     },
     {
         path: 'admin',
-        canActivate: [src_app_helper_auth_guard_service__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]],
-        component: _ui_admin_ui_layout_layout_component__WEBPACK_IMPORTED_MODULE_2__["LayoutComponent"],
-        loadChildren: () => __webpack_require__.e(/*! import() | admin-admin-module */ "admin-admin-module").then(__webpack_require__.bind(null, /*! ../admin/admin.module */ "./src/app/controllers/admin/admin.module.ts")).then((mod) => mod.AdminDashboardModule)
+        //  canActivate: [AuthGuard],
+        component: _views_admin_ui_layout_layout_component__WEBPACK_IMPORTED_MODULE_2__["LayoutComponent"],
+        loadChildren: () => __webpack_require__.e(/*! import() | admin-admin-module */ "admin-admin-module").then(__webpack_require__.bind(null, /*! ../admin/admin.module */ "m4W2")).then((mod) => mod.AdminDashboardModule)
     }
 ];
 class FeatureShellRouteRoutes {
@@ -48,7 +46,7 @@ FeatureShellRouteRoutes.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
 
 /***/ }),
 
-/***/ "./src/app/controllers/FeatureRouting/feature.module.ts":
+/***/ "bLJ4":
 /*!**************************************************************!*\
   !*** ./src/app/controllers/FeatureRouting/feature.module.ts ***!
   \**************************************************************/
@@ -58,9 +56,9 @@ FeatureShellRouteRoutes.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FeatureModule", function() { return FeatureModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _feature_Route_routing__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./feature-Route.routing */ "./src/app/controllers/FeatureRouting/feature-Route.routing.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _feature_Route_routing__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./feature-Route.routing */ "3cIW");
 
 
 

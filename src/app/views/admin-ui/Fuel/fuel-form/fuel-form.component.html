@@ -1,11 +1,42 @@
 <div class="card">
   <div class="card-block">
-      <h3>
-          <clr-icon shape="switch" size="28"></clr-icon>Fuel history
-      </h3>
-      <a routerLink="/admin/fuel">
-        All
-      </a>
+    <h3>
+      <clr-icon shape="switch" size="28"></clr-icon>Send Email
+    </h3> 
+    <br />
 
+
+    <button class="btn btn-success" (click)="dialog=true" solid>Create Email +</button>
+
+    |
+    <a routerLink="/admin/users">
+      All
+    </a>
+    |
   </div>
 </div>
+
+
+<clr-modal [(clrModalOpen)]="dialog">
+  <h3 class="modal-title">Message</h3>
+  <div class="modal-body">
+    <form   [formGroup]="vendorForm" (ngSubmit)="onSubmit()" clrForm>
+
+     <div class="form-block">
+
+      <clr-input-container >
+        <label>Message </label>
+        <textarea   clrInput formControlName="msg"  rows="10" required  style="width: 100%;"> </textarea>
+      </clr-input-container>
+
+
+     </div>
+
+
+
+      <button type="submit" class="btn btn-success">submit</button>
+
+    </form>
+  </div>
+
+</clr-modal>

@@ -13,6 +13,7 @@ import {UsersFormComponent} from './Users/users-form/users-form.component';
 import {InsuranceListComponent} from './insuarance/insurance-list/insurance-list.component';
 import {BookingFormComponent} from './Booking/booking-form/booking-form.component'
 import {InsuaranceDetailComponent} from './insuarance/insuarance-detail/insuarance-detail.component'
+import {FuelFormComponent} from './Fuel/fuel-form/fuel-form.component'
 
 @NgModule({
     imports: [
@@ -34,6 +35,7 @@ import {InsuaranceDetailComponent} from './insuarance/insuarance-detail/insuaran
         UsersListComponent,
         BookingFormComponent,
         InsuranceListComponent ,InsuaranceDetailComponent
+        ,FuelFormComponent
      
     ] ,
 
@@ -44,8 +46,10 @@ import {InsuaranceDetailComponent} from './insuarance/insuarance-detail/insuaran
         UsersFormComponent,
         UsersListComponent,
         BookingFormComponent,
-      
+        FuelFormComponent,
         InsuranceListComponent ,InsuaranceDetailComponent ,
        
     ]
-})export class AdminModule {}
+})
+
+export class AdminModule {}

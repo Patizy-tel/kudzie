@@ -14,6 +14,6 @@ import {InsuaranceComponent} from './insuarance/insuarance.component'
     declarations: [
         DashboardComponent,
         UsersComponent,
-        InsuaranceComponent 
+        InsuaranceComponent ,
     ]
 })export class AdminDashboardModule {}

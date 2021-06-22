@@ -10,7 +10,7 @@ const routes : Routes = [
 
     {
         path: '',
-
+        redirectTo:'patients',
         component:DashboardComponent
     },
     {
@@ -22,13 +22,13 @@ const routes : Routes = [
     {
 
 
-        path:'insuarance',
+        path:'patients',
         component:InsuaranceComponent
     } ,{
 
 
 
-        path:'detail-insuarances/:id',
+        path:'detail-patients/:id',
         component:InsuaranceDetailComponent
     }
 

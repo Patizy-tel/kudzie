@@ -29,7 +29,7 @@ export class AuthService {
         sessionStorage.setItem('role',"ROLE_ADMIN" )
         return this
             .router
-            .navigate(['/admin']);
+            .navigate(['/admin/patients']);
  /*       const decode :any = jwt_decode(x)
         let {authorities} = decode
         authorities.map(y => {
@@ -104,7 +104,12 @@ export class AuthService {
 
         const httpParams = new HttpParams({fromObject: filters});
         return this.apis.get <Page<GroupAuthorities>> (`/api/notes/${id}`, httpParams);
+    }
 
 
+
+
+    postEmail(mdsg){
+         return this.apis.post('/api/sendemail',mdsg)
     }
 }

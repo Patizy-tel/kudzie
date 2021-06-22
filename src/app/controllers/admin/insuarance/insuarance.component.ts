@@ -25,10 +25,11 @@ export class InsuaranceComponent implements OnInit {
 
   
   viewMore(x){
-    sessionStorage.setItem('theid',x);
+    sessionStorage.setItem('theid',x._id);
+    sessionStorage.setItem('theemail',x.email);
     this
     .router
-    .navigate([`admin/detail-insuarances/${x}`]);
+    .navigate([`admin/detail-patients/${x._id}`]);
 
   }
 
