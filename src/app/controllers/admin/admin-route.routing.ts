@@ -2,34 +2,22 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {UsersComponent} from './Users/Users.component'
-
-import {InsuaranceComponent} from './insuarance/insuarance.component'
-import { InsuaranceDetailComponent } from 'src/app/views/admin-ui/insuarance/insuarance-detail/insuarance-detail.component';
+import { ResultsComponent } from './results/results.component';
+import { GraphslistComponent } from './graphslist/graphslist.component'
 
 const routes : Routes = [
 
     {
-        path: '',
-        redirectTo:'patients',
-        component:DashboardComponent
+        path:'',
+        redirectTo:'results'
     },
-    {
-      path:'users',
-      component:UsersComponent
-    },
-    
-    
-    {
+ {
+        path:'results',
+        component:ResultsComponent
 
-
-        path:'patients',
-        component:InsuaranceComponent
     } ,{
-
-
-
-        path:'detail-patients/:id',
-        component:InsuaranceDetailComponent
+        path:'graphs',
+        component:GraphslistComponent
     }
 
 

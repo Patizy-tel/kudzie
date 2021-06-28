@@ -29,7 +29,7 @@ export class AuthService {
         sessionStorage.setItem('role',"ROLE_ADMIN" )
         return this
             .router
-            .navigate(['/admin/patients']);
+            .navigate(['/admin/results']);
  /*       const decode :any = jwt_decode(x)
         let {authorities} = decode
         authorities.map(y => {
@@ -74,17 +74,29 @@ export class AuthService {
     }
 
 
-    postPatient(patient) {
-        return this.apis.post('/api/patients',patient);
+    postResult(patient) {
+        return this.apis.post('/api/results',patient);
 
     }
 
 
-    getAllpaitns(filters:any){
+    getAllpaitns(){
+
+        return this.apis.get(`/api/results/a`);
 
 
-        const httpParams = new HttpParams({fromObject: filters});
-        return this.apis.get <Page<GroupAuthorities>> (`/api/patients`, httpParams);
+    }
+    
+    getAllpaitns2(){
+
+        return this.apis.get(`/api/results/b`);
+
+
+    }
+    
+    getAllpaitns3(){
+
+        return this.apis.get(`/api/results/c`);
 
 
     }
@@ -99,11 +111,8 @@ export class AuthService {
     }
 
 
-    getAllNotes( id,filters:any){
-
-
-        const httpParams = new HttpParams({fromObject: filters});
-        return this.apis.get <Page<GroupAuthorities>> (`/api/notes/${id}`, httpParams);
+    getAllGraphs(){
+        return this.apis.get <Page<GroupAuthorities>> (`/api/results/forgraph`);
     }
 
 
@@ -112,4 +121,25 @@ export class AuthService {
     postEmail(mdsg){
          return this.apis.post('/api/sendemail',mdsg)
     }
+
+
+
+
+     getSms(){
+
+         return this.apis.get('/api/sms')
+     }
+
+
+
+     deletePatient(id){
+
+         return this.apis.delete(`/api/patients/${id}`)
+     }
+
+
+
+
+
+
 }

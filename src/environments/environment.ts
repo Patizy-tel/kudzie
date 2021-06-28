@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false ,
- 
-  apiUrl:'https://backendpatientkudzie.herokuapp.com'
+
+ apiUrl:'https://zeebackend.herokuapp.com',
+ // apiUrl:'http://localhost:3000'
 };
 
 /*

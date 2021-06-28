@@ -1,5 +1,5 @@
 <clr-main-container>
-    <clr-header class="header-4" style="background-color: rgba(100, 12, 158, 0.692);">
+    <clr-header class="header-4" style="background-color: rgba(12, 158, 158, 0.692);">
         <div class="branding">
             <a class="nav-link"></a>
         </div>
@@ -30,10 +30,17 @@
             [(clrVerticalNavCollapsed)]="collapsed">
            
 
-            <a clrVerticalNavLink routerLink="./patients">
+            <a clrVerticalNavLink routerLink="./results">
                 <clr-icon clrVerticalNavIcon shape="users"></clr-icon>
-                Patients
+                Results
             </a>
+
+
+            <a clrVerticalNavLink routerLink="./graphs">
+                <clr-icon clrVerticalNavIcon shape="users"></clr-icon>
+                Graphs
+            </a>
+
 
 
           

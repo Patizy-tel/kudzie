@@ -6,7 +6,9 @@ import {AgmCoreModule} from '@agm/core';
 import {AdminRoute} from './admin-route.routing'
 import {DashboardComponent} from './dashboard/dashboard.component'
 import {UsersComponent} from './Users/Users.component'
-import {InsuaranceComponent} from './insuarance/insuarance.component'
+
+import { ResultsComponent } from './results/results.component';
+import { GraphslistComponent } from './graphslist/graphslist.component'
 @NgModule({
     imports: [
         CommonModule, AdminModule, ClarityModule, AdminRoute, AgmCoreModule.forRoot({apiKey: 'AIzaSyD1MWtAHULMcX32FhTwXegpkwxU9OjBoUQ', libraries: ['places']})
@@ -14,6 +16,9 @@ import {InsuaranceComponent} from './insuarance/insuarance.component'
     declarations: [
         DashboardComponent,
         UsersComponent,
-        InsuaranceComponent ,
-    ]
+    
+        ResultsComponent,
+        GraphslistComponent ,
+    ],
+    exports: [GraphslistComponent]
 })export class AdminDashboardModule {}

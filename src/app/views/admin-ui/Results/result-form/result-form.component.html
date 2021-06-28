@@ -1,0 +1,74 @@
+<div class="card">
+    <div class="card-block">
+      <h3>
+        <clr-icon shape="switch" size="28"></clr-icon>New Inputs
+      </h3> 
+      <br />
+  
+  
+      <button class="btn btn-success" (click)="dialog=true" solid>New +</button>
+  
+      |
+      <a routerLink="/admin/users">
+        All
+      </a>
+      |
+    </div>
+  </div>
+  
+  
+  <clr-modal [(clrModalOpen)]="dialog">
+    <h3 class="modal-title">Inputs</h3>
+    <div class="modal-body">
+      <form   [formGroup]="vendorForm" (ngSubmit)="onSubmit()" clrForm>
+
+
+        <clr-select-container>
+            <label>Select Product</label>
+            <select clrSelect formControlName="productName" required>
+                <option value="product A">Product A</option>
+                <option value="product B">Product B</option>
+                <option value="product C">Product C</option>
+              
+             
+            </select>
+        </clr-select-container>
+
+ 
+  
+     
+        <clr-input-container >
+          <label>Income </label>
+          <input   clrInput formControlName="income"  type="number" rows="10" required  style="width: 100%;"/>
+        </clr-input-container>
+        
+        <clr-input-container >
+            <label>Expenses </label>
+            <input   clrInput formControlName="expense"  type="number" required  style="width: 100%;"/>
+          </clr-input-container>
+    
+    
+        
+    
+          
+        <clr-input-container >
+            <label>Year </label>
+            <input   clrInput formControlName="year"  type="number"  maxlength="4" required  style="width: 100%;"/>
+          </clr-input-container>
+    
+    
+        
+    
+  
+  
+      
+  
+  
+  
+        <button type="submit" class="btn btn-success">submit</button>
+  
+      </form>
+    </div>
+  
+  </clr-modal>
+  

@@ -10,10 +10,12 @@ import {HelperModule} from '../../helper/helper.module';
 import {LayoutComponent} from './layout/layout.component';
 import {UsersListComponent} from "./Users/users-list/users-list.component"
 import {UsersFormComponent} from './Users/users-form/users-form.component';
-import {InsuranceListComponent} from './insuarance/insurance-list/insurance-list.component';
 import {BookingFormComponent} from './Booking/booking-form/booking-form.component'
-import {InsuaranceDetailComponent} from './insuarance/insuarance-detail/insuarance-detail.component'
-import {FuelFormComponent} from './Fuel/fuel-form/fuel-form.component'
+import {FuelFormComponent} from './Fuel/fuel-form/fuel-form.component';
+import { NotificationComponent } from './notification/notification.component';
+import { ResultFormComponent } from './Results/result-form/result-form.component';
+import { ResultListComponent } from './Results/result-list/result-list.component';
+import { GraphsComponent } from './Graphs/graphs/graphs.component'
 
 @NgModule({
     imports: [
@@ -33,9 +35,8 @@ import {FuelFormComponent} from './Fuel/fuel-form/fuel-form.component'
         LayoutComponent,
         UsersFormComponent,
         UsersListComponent,
-        BookingFormComponent,
-        InsuranceListComponent ,InsuaranceDetailComponent
-        ,FuelFormComponent
+        BookingFormComponent
+        ,FuelFormComponent, NotificationComponent, ResultFormComponent, ResultListComponent, GraphsComponent
      
     ] ,
 
@@ -47,7 +48,7 @@ import {FuelFormComponent} from './Fuel/fuel-form/fuel-form.component'
         UsersListComponent,
         BookingFormComponent,
         FuelFormComponent,
-        InsuranceListComponent ,InsuaranceDetailComponent ,
+       ResultFormComponent, ResultListComponent, GraphsComponent
        
     ]
 })

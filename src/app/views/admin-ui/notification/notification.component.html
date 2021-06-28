@@ -1,0 +1,33 @@
+
+<p> Notifications </p>
+
+<div class="limit-height">
+
+  <clr-datagrid   (clrDgRefresh)="updatedState.emit($event)">
+   
+    <clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'message'">Message</clr-dg-column>
+    <clr-dg-column [clrDgField]="'date'">Date</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of levels">
+
+        <clr-dg-cell>{{user.name}}</clr-dg-cell>
+  
+      <clr-dg-cell>{{user.message}}</clr-dg-cell>
+    
+
+
+      <clr-dg-cell>{{user.date}}</clr-dg-cell>
+
+
+      <clr-dg-action-overflow>
+
+    </clr-dg-action-overflow>
+
+
+    </clr-dg-row>
+
+
+  </clr-datagrid>
+
+  </div>
