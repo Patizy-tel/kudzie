@@ -17,34 +17,12 @@ export class UsersListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getLevels({})
 
 
     
   }
 
 
-  
-  public  getLevels(state:ClrDatagridStateInterface){
-
-    let id  = sessionStorage.getItem('theid')
-       this.notesSerices.getAllNotes(id,(Utilities.formatDatagridState(state, state.page
-         ? state.page.from / state.page.size
-         : 0))).subscribe((resp:any) =>{
-   
-                     console.log(resp);
-             this.total = resp.length;
-             this.levels= resp
-   
-   
-            
-         })
-   
-   
-   
-   
-   
       }
      
 
-}
