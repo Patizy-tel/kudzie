@@ -20,7 +20,7 @@
   <clr-modal [(clrModalOpen)]="dialog">
     <h3 class="modal-title">Inputs</h3>
     <div class="modal-body">
-      <form   [formGroup]="vendorForm" (ngSubmit)="onSubmit()" clrForm>
+      <form  (ngSubmit)="onSubmit()"  [formGroup]="vendorForm" clrForm>
 
 
         <clr-select-container>

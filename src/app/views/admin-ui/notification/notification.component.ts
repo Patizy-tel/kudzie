@@ -18,7 +18,7 @@ export class NotificationComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getLevels({})
+   
 
 
     
@@ -26,14 +26,4 @@ export class NotificationComponent implements OnInit {
 
 
   
-  public  getLevels(state:ClrDatagridStateInterface){
-       this.notesSerices.getSms().subscribe((resp:any) =>{
-   
-             console.log(resp);
-             this.total = resp.length;
-             this.levels= resp;         
-         });
-      }
-     
-
 }

@@ -9,9 +9,10 @@ import {UsersComponent} from './Users/Users.component'
 
 import { ResultsComponent } from './results/results.component';
 import { GraphslistComponent } from './graphslist/graphslist.component'
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
     imports: [
-        CommonModule, AdminModule, ClarityModule, AdminRoute, AgmCoreModule.forRoot({apiKey: 'AIzaSyD1MWtAHULMcX32FhTwXegpkwxU9OjBoUQ', libraries: ['places']})
+        CommonModule,ReactiveFormsModule, AdminModule, ClarityModule, AdminRoute, AgmCoreModule.forRoot({apiKey: 'AIzaSyD1MWtAHULMcX32FhTwXegpkwxU9OjBoUQ', libraries: ['places']})
     ],
     declarations: [
         DashboardComponent,

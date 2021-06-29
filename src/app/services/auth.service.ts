@@ -117,6 +117,12 @@ export class AuthService {
 
 
 
+    getReport(yr){
+
+         return  this.apis.get(`/api/results/report/${yr}`)
+    }
+
+
 
     postEmail(mdsg){
          return this.apis.post('/api/sendemail',mdsg)
@@ -125,13 +131,7 @@ export class AuthService {
 
 
 
-     getSms(){
-
-         return this.apis.get('/api/sms')
-     }
-
-
-
+  
      deletePatient(id){
 
          return this.apis.delete(`/api/patients/${id}`)
