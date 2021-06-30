@@ -1,9 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/services';
 import html2canvas from 'html2canvas';
 
 import * as jsPDF from 'jspdf';
+import {
+  ApexAxisChartSeries,
+  ApexChart,
+  ChartComponent,
+  ApexDataLabels,
+  ApexPlotOptions,
+  ApexYAxis,
+  ApexLegend,
+  ApexStroke,
+  ApexXAxis,
+  ApexFill,
+  ApexTooltip
+} from "ng-apexcharts";
+
+export type ChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  dataLabels: ApexDataLabels;
+  plotOptions: ApexPlotOptions;
+  yaxis: ApexYAxis;
+  xaxis: ApexXAxis;
+  fill: ApexFill;
+  tooltip: ApexTooltip;
+  stroke: ApexStroke;
+  legend: ApexLegend;
+};
+
+
+
+
+
 
 @Component({
   selector: 'app-results',
@@ -22,13 +53,25 @@ export class ResultsComponent implements OnInit {
 
   dialog:boolean = false
   accounts: any;
+  d1:any;
+  d2:any
+  d3:any
+
+
+  p1= [];
+  p2= [];
+  @ViewChild("chart") chart: ChartComponent;
+  @ViewChild("chart1") chart1: ChartComponent;
+  public chartOptions: Partial<ChartOptions>;
+  public chartOptions1: Partial<ChartOptions>;
 
   constructor(private serci :AuthService) { }
 
   ngOnInit() {
 
     this.getAllResults({});
-    this.createProjectForm() 
+    this.createProjectForm() ;
+  this.createChart();
   }
 
 
@@ -87,15 +130,49 @@ this.serci.getAllpaitns3().subscribe((resp:any) =>{
     this.serci.getReport(this.vendorForm.value.year).subscribe(async (resp:any)=>{
 
 
-     // console.log(resp);
-     // console.log('submitess');
-
 
      this.accounts =  resp ;
+
+     this.d1 = resp[0].optimalcompany;
+     this.d2 = resp[1].optimalcompany;
+     this.d3 = resp[2].optimalcompany;
+
+     console.log(resp)
+
+
+      await  resp.map(x=>{
+       
+       
+        this.p1.push(x.optimalcompany)
+       
+       
+
+      });
+
+
+
+      await  resp.map(x=>{
+        return  this.p2.push(x.optimalMarket)
+        
+ 
+ 
+       })
+
+
+
+
+
+
+
+
+
+
       let ay  = await Math.max.apply(Math, resp.map(function(o) { 
-        return o.result; 
+        return o.optimalcompany; 
       
       }));
+
+      this.createChart()
 
 
     console.log(ay)
@@ -166,5 +243,151 @@ this.serci.getAllpaitns3().subscribe((resp:any) =>{
       pdf.save(`Results`); // Generated PDF   
     }); 
     }
+
+
+
+
+
+    createChart(){
+
+      this.chartOptions = {
+        series: [
+          {
+            name: "Akribos Securities",
+            data: [this.d1]
+          },
+          {
+            name: "Akribos Realised Gain",
+            data: [this.d2]
+          },
+          {
+            name: "Akribos Wealth",
+            data: [this.d3]
+          }
+        ],
+        chart: {
+          type: "bar",
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "55%",
+            endingShape: "rounded"
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"]
+        },
+        xaxis: {
+          categories: [
+            this.vendorForm.value.year
+           
+          ]
+        },
+        yaxis: {
+          title: {
+            text: "$"
+          }
+        },
+        fill: {
+          opacity: 1
+        },
+        tooltip: {
+          y: {
+            formatter: function(val) {
+              return "$ " + val 
+            }
+          }
+        
+      
+  
+  }
+
+
+
+
+
+}
+
+
+
+this.chartOptions1 = {
+  series: [
+    {
+      name: "Optimal Company",
+      data: this.p1 
+    },
+    {
+      name: "Optimal  Market",
+      data: this.p1
+    }
+  ],
+  chart: {
+    type: "bar",
+    height: 350
+  },
+  plotOptions: {
+    bar: {
+      horizontal: false,
+      columnWidth: "55%",
+      endingShape: "rounded"
+    }
+  },
+  dataLabels: {
+    enabled: false
+  },
+  stroke: {
+    show: true,
+    width: 2,
+    colors: ["transparent"]
+  },
+  xaxis: {
+    categories: [
+
+      "Akribos Securities" ,  "Akribos Realised Gain",
+      "Akribos Wealth"
+   
+     
+    ]
+  },
+  yaxis: {
+    title: {
+      text: "$"
+    }
+  },
+  fill: {
+    opacity: 1
+  },
+  tooltip: {
+    y: {
+      formatter: function(val) {
+        return "$ " + val 
+      }
+    }
+  
+
+
+}
+
+
+
+
+
+}
+
+
+
+
+
+
+}
+
+  
 
 }

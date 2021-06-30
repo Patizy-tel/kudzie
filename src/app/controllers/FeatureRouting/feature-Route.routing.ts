@@ -2,11 +2,19 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {LayoutComponent} from '../../views/admin-ui/layout/layout.component';
 import { AuthGuard } from 'src/app/helper/auth-guard.service';
+import { UserviewComponent } from '../admin/userview/userview.component';
 const routes : Routes = [
     {
         path: '',
         loadChildren: () => import ('../auth/auth.module').then((mod) => mod.AuthModule)
     },
+
+    {
+        path: 'userview',
+        component:UserviewComponent
+ 
+    },
+
 
     {
 

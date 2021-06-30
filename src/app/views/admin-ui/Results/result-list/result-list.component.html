@@ -7,22 +7,19 @@
 <div class="limit-height">
 
     <clr-datagrid>
-   
-        <clr-dg-column [clrDgField]="'firstName'">Company Name</clr-dg-column>
-        <clr-dg-column [clrDgField]="'expense'">Expenses</clr-dg-column>
+        <clr-dg-column [clrDgField]="'expense'">Expenditure</clr-dg-column>
         <clr-dg-column [clrDgField]="'income'">income</clr-dg-column>
-        <clr-dg-column [clrDgField]="'result'">Results</clr-dg-column>
+        <clr-dg-column [clrDgField]="'result'">Optimal Company</clr-dg-column>
+        <clr-dg-column [clrDgField]="'result'">Optimal Market</clr-dg-column>
         <clr-dg-column [clrDgField]="'year'">Year</clr-dg-column>
-  
-        <clr-dg-column [clrDgField]="'updatedAt'">Reported Date</clr-dg-column>
-
         <clr-dg-row *clrDgItems="let user of levels">
-            <clr-dg-cell>{{user.productName}}</clr-dg-cell>
+          
             <clr-dg-cell>{{user.expense}}</clr-dg-cell>
             <clr-dg-cell>{{user.income}}</clr-dg-cell>
-            <clr-dg-cell>{{user.result}}</clr-dg-cell>
+            <clr-dg-cell>{{user.optimalcompany.toFixed(2)}}</clr-dg-cell>
+            <clr-dg-cell>{{user.optimalMarket.toFixed(2)}}</clr-dg-cell>
             <clr-dg-cell>{{user.year}}</clr-dg-cell>
-            <clr-dg-cell>{{user.updatedAt}}</clr-dg-cell>
+
             <clr-dg-action-overflow>
             </clr-dg-action-overflow>
 

@@ -10,16 +10,19 @@ import {UsersComponent} from './Users/Users.component'
 import { ResultsComponent } from './results/results.component';
 import { GraphslistComponent } from './graphslist/graphslist.component'
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserviewComponent } from './userview/userview.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 @NgModule({
     imports: [
-        CommonModule,ReactiveFormsModule, AdminModule, ClarityModule, AdminRoute, AgmCoreModule.forRoot({apiKey: 'AIzaSyD1MWtAHULMcX32FhTwXegpkwxU9OjBoUQ', libraries: ['places']})
+        CommonModule,ReactiveFormsModule, NgApexchartsModule, AdminModule, ClarityModule, AdminRoute, AgmCoreModule.forRoot({apiKey: 'AIzaSyD1MWtAHULMcX32FhTwXegpkwxU9OjBoUQ', libraries: ['places']})
     ],
     declarations: [
         DashboardComponent,
         UsersComponent,
     
         ResultsComponent,
-        GraphslistComponent ,
+        GraphslistComponent,
+        UserviewComponent ,
     ],
-    exports: [GraphslistComponent]
+    exports: [GraphslistComponent, UserviewComponent]
 })export class AdminDashboardModule {}
