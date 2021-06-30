@@ -19,10 +19,9 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     declarations: [
         DashboardComponent,
         UsersComponent,
-    
         ResultsComponent,
         GraphslistComponent,
         UserviewComponent ,
     ],
-    exports: [GraphslistComponent, UserviewComponent]
+    exports: [GraphslistComponent,ResultsComponent, UserviewComponent]
 })export class AdminDashboardModule {}

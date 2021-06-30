@@ -1,1 +1,189 @@
-<p>userview works!</p>
+
+
+<form  [formGroup]="vendorForm" (ngSubmit)="onSubmit()">
+    <input type="number" formControlName="year" placeholder="year">
+
+
+<button class="btn" type="submit">Generate Report</button>
+</form>
+
+
+
+<h1>Akribos Securities
+</h1>
+
+<app-result-list [total]="total" (updatedState)=" getAllResults($event)" 
+ [levels]="levels" >  </app-result-list>
+
+
+ 
+<h1>Akribos Realised Gain</h1>
+
+ <app-result-list [total]="total2" (updatedState)=" getAllResults($event)" 
+ [levels]="levels2" >  </app-result-list> 
+
+
+
+
+ 
+<h1>Akribos Wealth</h1>
+ <app-result-list [total]="total3" (updatedState)=" getAllResults($event)" 
+ [levels]="levels3" >  </app-result-list>
+
+
+
+
+   
+ <clr-modal [(clrModalOpen)]="dialog" style="width: 100%;"  clrModalSize="xl"> 
+<div class="modal-body" style="width: 100%;">
+    <div class="row tm-content-row tm-mt-small">
+        <div class="col-xl-12 col-lg-12 col-md-12">
+            <div class="bg-white tm-block">
+                <button class="btn btn-success" (click)="openPDF()">Export to PDF</button>
+                <div class="col-12" id="statement">
+                    
+                    <div class="row w-100 d-block d-flex justify-content-center">
+                      
+                        <div
+                            class="row d-block d-flex justify-content-center text-success em-power-txt mt-2">
+                           Report
+                        </div>
+
+
+
+
+
+
+                     
+             
+        
+                        <table  class="table table-hover table-striped tm-table-striped-even mt-4">
+                            <thead>
+                                <tr class="tm-bg-gray">
+
+                                    <th scope="col">Optimality Review</th>
+                                    <th scope="col">Result</th>
+                                   
+                            
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <td>{{"Best Product"}}</td>
+                      
+                                <td> {{bestProduct}}</td>
+
+                                <tr *ngFor="let payment of accounts">
+                                   
+                           
+                                    <td>{{payment.productName}}</td>
+                                    <td>{{payment.optimalcompany.toFixed(2)}}%</td>
+                                  
+                                    <td></td>
+                                </tr>
+
+                   
+
+                            </tbody>
+                        </table>
+
+                        <div id="chart" style="width: 100%;">
+                            <apx-chart
+                              [series]="chartOptions.series"
+                              [chart]="chartOptions.chart"
+                              [dataLabels]="chartOptions.dataLabels"
+                              [plotOptions]="chartOptions.plotOptions"
+                              [yaxis]="chartOptions.yaxis"
+                              [legend]="chartOptions.legend"
+                              [fill]="chartOptions.fill"
+                              [stroke]="chartOptions.stroke"
+                              [tooltip]="chartOptions.tooltip"
+                              [xaxis]="chartOptions.xaxis"
+                            ></apx-chart>
+                          </div>
+
+
+
+
+                          
+                        <table  class="table table-hover table-striped tm-table-striped-even mt-4">
+                            <thead>
+                                <tr class="tm-bg-gray">
+
+                                    <th scope="col">Nash Equilibrium Analysis</th>
+                                    <th scope="col">Result</th>
+                                   
+                            
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <td>{{"Optimal Product"}}</td>
+                      
+                                <td> {{bestProduct}}</td>
+
+                                <tr *ngFor="let payment of accounts">
+                                   
+                           
+                                    <td>{{payment.productName}}</td>
+
+
+                                    <div *ngIf="payment.optimalcompany < payment.optimalMarket">
+
+
+                                        <td></td>
+
+
+
+                                    </div>
+
+
+                                    <div *ngIf="payment.optimalcompany > payment.optimalMarket || payment.optimalcompany  == payment.optimalMarket">
+
+                                        <td>{{payment.optimalcompany.toFixed(2)}}%</td>
+
+                                    </div>                                 
+                               
+                                </tr>
+
+                   
+
+                            </tbody>
+                        </table>
+
+                        <div id="chart1" style="width: 100%;">
+                            <apx-chart
+                              [series]="chartOptions1.series"
+                              [chart]="chartOptions1.chart"
+                              [dataLabels]="chartOptions1.dataLabels"
+                              [plotOptions]="chartOptions1.plotOptions"
+                              [yaxis]="chartOptions1.yaxis"
+                              [legend]="chartOptions1.legend"
+                              [fill]="chartOptions1.fill"
+                              [stroke]="chartOptions1.stroke"
+                              [tooltip]="chartOptions1.tooltip"
+                              [xaxis]="chartOptions1.xaxis"
+                            ></apx-chart>
+                          </div>
+
+
+
+
+
+
+
+
+
+                    
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+
+  </clr-modal>
+  
